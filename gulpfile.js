@@ -12,6 +12,8 @@ const browserify = require('browserify');
 const babelify = require('babelify');
 const watchify = require('watchify');
 
+const webpack = require('webpack');
+
 gulp.task('browserify', function() {
     browserify('./index.jsx', {
         debug: true,
@@ -36,6 +38,17 @@ gulp.task('webserver', function() {
             livereload: true
         })
     );
+});
+
+gulp.task('webpack', function() {
+    var config = require('./webpack.config.js');
+    webpack(config, function(err, stats) {
+        if (err) {
+            console.error('webpack', err);
+            return;
+        }
+        console.log('webpack', stats);
+    });
 });
 
 gulp.task('default', ['browserify', 'webserver']);
