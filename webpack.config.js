@@ -3,10 +3,14 @@
  */
 
 module.exports = {
-    entry: './index.jsx',
+    entry: {
+        commonjs: './commonjs/index.jsx',
+        timer: './timer/timer.jsx',
+        app: './app/app.jsx'
+    },
     output: {
-        path: '.',
-        filename: 'bundle.js'
+        path: './build',
+        filename: '[name].js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']

@@ -47,8 +47,8 @@ gulp.task('webpack', function() {
             console.error('webpack', err);
             return;
         }
-        console.log('webpack', stats);
+        console.log('webpack ok');
     });
 });
 
-gulp.task('default', ['browserify', 'webserver']);
+gulp.task('default', ['webpack']);
