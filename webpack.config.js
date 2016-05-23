@@ -10,7 +10,7 @@ module.exports = {
     entry: {
         commonjs: './commonjs/index.jsx',
         timer: './timer/timer.jsx',
-        app: './app/app.jsx'
+        todo: './todo/todo.jsx'
     },
     output: {
         path: './build',
@@ -32,10 +32,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: 'app.html',
-            template: 'app/app.html',
+            filename: 'todo.html',
+            template: 'todo/todo.html',
             inject: 'body',
-            chunks: ['app']
+            chunks: ['todo']
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
