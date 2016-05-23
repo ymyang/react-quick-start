@@ -15,6 +15,13 @@ class TodoList extends Component {
     }
 }
 
+//const TodoList = (props) => {
+//    let createItem = (item) => {
+//        return <li key={item.id}>{item.text}</li>;
+//    };
+//    return <ul>{props.items.map(createItem)}</ul>;
+//};
+
 class TodoApp extends Component {
     constructor(props) {
         super(props);
