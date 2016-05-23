@@ -3,6 +3,9 @@
  */
 'use strict';
 
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Timer = React.createClass({
     getInitialState: function() {
         return { secondsElapsed: 0 };
