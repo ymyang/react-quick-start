@@ -10,7 +10,8 @@ module.exports = {
     entry: {
         commonjs: './commonjs/index.jsx',
         timer: './timer/timer.jsx',
-        todo: './todo/todo.jsx'
+        todo: './todo/todo.jsx',
+        router: './react-router/router.jsx'
     },
     output: {
         path: './build',
@@ -48,6 +49,12 @@ module.exports = {
             template: 'timer/timer.html',
             inject: 'body',
             chunks: ['timer']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'router.html',
+            template: 'react-router/index.html',
+            inject: 'body',
+            chunks: ['router']
         })
     ]
 };
