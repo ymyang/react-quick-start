@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, Link } from 'react-router';
+import { Router, Route, IndexRoute, Link, Redirect, hashHistory } from 'react-router';
+//import createHashHistory from 'history/lib/createHashHistory'
 
 class App extends Component {
     constructor(props) {
@@ -16,8 +17,18 @@ class App extends Component {
                     <li><Link to='/about'>About</Link></li>
                     <li><Link to='/inbox'>Inbox</Link></li>
                 </ul>
+                {this.props.children}
             </div>
         );
+    }
+}
+
+class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return <div>Welcome to the App!</div>;
     }
 }
 
@@ -54,11 +65,13 @@ class Message extends Component {
 }
 
 render((
-    <Router>
+    <Router history={hashHistory}>
         <Route path='/' component={App}>
+            <IndexRoute component={Dashboard} />
             <Route path='about' component={About} />
             <Route path='inbox' component={Inbox}>
-                <Route path='message/:id' component={Message} />
+                <Route path='/messages/:id' component={Message} />
+                <Redirect from="messages/:id" to="/messages/:id" />
             </Route>
         </Route>
     </Router>
