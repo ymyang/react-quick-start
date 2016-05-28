@@ -8,18 +8,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        commonjs: './commonjs/index.jsx',
-        timer: './timer/timer.jsx',
-        todo: './todo/todo.jsx',
-        router: './react-router/router.jsx'
+        commonjs: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './commonjs/index.jsx'
+        ],
+        timer: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './timer/timer.jsx'
+        ],
+        todo: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './todo/todo.jsx'
+        ],
+        router: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './react-router/router.jsx'
+        ]
     },
     output: {
-        path: './build',
+        path: __dirname + '/build',
         filename: '[name].js'
     },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
+    devtool: 'inline-source-map',
     module: {
         loaders: [
             {
@@ -27,7 +41,8 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['es2015', 'react']
-                }
+                },
+                exclude: /node_modules/
             }
         ]
     },
@@ -56,6 +71,6 @@ module.exports = {
             inject: 'body',
             chunks: ['router']
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

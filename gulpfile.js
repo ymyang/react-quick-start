@@ -5,6 +5,7 @@
 
 const gulp = require('gulp');
 const webpack = require('webpack');
+const WebpackDevServer = require("webpack-dev-server");
 const del = require('del');
 
 gulp.task('clean', (cb) => {
@@ -19,6 +20,24 @@ gulp.task('webpack', () => {
             return;
         }
         console.log('webpack ok');
+    });
+});
+
+gulp.task('dev', () => {
+    let config = require('./webpack.config.dev.js');
+    let server = new WebpackDevServer(webpack(config), {
+        hot: true,
+        lazy: false,
+        proxy: {
+            '*': 'http://121.42.140.134'
+        }
+    });
+    server.listen('80', 'localhost', (err) => {
+        if (err) {
+            console.error('dev:', err);
+            return;
+        }
+        console.log('webpack dev server start');
     });
 });
 
