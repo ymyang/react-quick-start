@@ -11,7 +11,8 @@ module.exports = {
         commonjs: './commonjs/index.jsx',
         timer: './timer/timer.jsx',
         todo: './todo/todo.jsx',
-        router: './react-router/router.jsx'
+        router: './react-router/router.jsx',
+        redux: './redux/index.jsx'
     },
     output: {
         path: './build',
@@ -55,6 +56,12 @@ module.exports = {
             template: 'react-router/index.html',
             inject: 'body',
             chunks: ['router']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'redux.html',
+            template: 'redux/index.html',
+            inject: 'body',
+            chunks: ['redux']
         }),
         new webpack.optimize.UglifyJsPlugin()
     ]

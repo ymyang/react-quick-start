@@ -27,6 +27,11 @@ module.exports = {
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost',
             './react-router/router.jsx'
+        ],
+        redux: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './redux/index.jsx'
         ]
     },
     output: {
@@ -70,6 +75,12 @@ module.exports = {
             template: 'react-router/index.html',
             inject: 'body',
             chunks: ['router']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'redux.html',
+            template: 'redux/index.html',
+            inject: 'body',
+            chunks: ['redux']
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
