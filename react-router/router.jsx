@@ -64,15 +64,42 @@ class Message extends Component {
     }
 }
 
-render((
-    <Router history={hashHistory}>
-        <Route path='/' component={App}>
-            <IndexRoute component={Dashboard} />
-            <Route path='about' component={About} />
-            <Route path='inbox' component={Inbox}>
-                <Route path='/messages/:id' component={Message} />
-                <Redirect from="messages/:id" to="/messages/:id" />
-            </Route>
-        </Route>
-    </Router>
-), document.getElementById('app'));
+let routerConfig = [
+    {
+        path: '/',
+        component: App,
+        indexRoute: { component: Dashboard },
+        childRoutes: [
+            { path: 'about', component: About },
+            {
+                path: 'inbox',
+                component: Inbox,
+                childRoutes: [
+                    { path: '/messages/:id', component: Message },
+                    {
+                        path: 'messages/:id',
+                        onEnter: (nextState, replaceState) => {
+                            replaceState(null, '/messages/' + nextState.params.id);
+                        }
+                    }
+                ]
+            }
+        ]
+
+    }
+];
+
+render(<Router history={hashHistory} routes={routerConfig} />, document.getElementById('app'));
+
+//render((
+//    <Router history={hashHistory}>
+//        <Route path='/' component={App}>
+//            <IndexRoute component={Dashboard} />
+//            <Route path='about' component={About} />
+//            <Route path='inbox' component={Inbox}>
+//                <Route path='/messages/:id' component={Message} />
+//                <Redirect from="messages/:id" to="/messages/:id" />
+//            </Route>
+//        </Route>
+//    </Router>
+//), document.getElementById('app'));
