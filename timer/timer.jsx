@@ -24,4 +24,4 @@ var Timer = React.createClass({
     }
 });
 
-ReactDOM.render(<Timer/>, document.getElementById('timer'));
+ReactDOM.render(<Timer/>, document.getElementById('app'));

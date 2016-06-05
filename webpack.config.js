@@ -12,7 +12,8 @@ module.exports = {
         timer: './timer/timer.jsx',
         todo: './todo/todo.jsx',
         router: './react-router/router.jsx',
-        redux: './redux/index.jsx'
+        redux: './redux/index.jsx',
+        async: './async-app/index.js'
     },
     output: {
         path: './build',
@@ -35,7 +36,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'todo.html',
-            template: 'todo/todo.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['todo']
         }),
@@ -47,21 +48,27 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'timer.html',
-            template: 'timer/timer.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['timer']
         }),
         new HtmlWebpackPlugin({
             filename: 'router.html',
-            template: 'react-router/index.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['router']
         }),
         new HtmlWebpackPlugin({
             filename: 'redux.html',
-            template: 'redux/index.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['redux']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'async.html',
+            template: 'index.html',
+            inject: 'body',
+            chunks: ['async']
         }),
         new webpack.optimize.UglifyJsPlugin()
     ]

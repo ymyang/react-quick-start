@@ -32,6 +32,11 @@ module.exports = {
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost',
             './redux/index.jsx'
+        ],
+        async: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost',
+            './async-app/index.js'
         ]
     },
     output: {
@@ -54,7 +59,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'todo.html',
-            template: 'todo/todo.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['todo']
         }),
@@ -66,21 +71,27 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'timer.html',
-            template: 'timer/timer.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['timer']
         }),
         new HtmlWebpackPlugin({
             filename: 'router.html',
-            template: 'react-router/index.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['router']
         }),
         new HtmlWebpackPlugin({
             filename: 'redux.html',
-            template: 'redux/index.html',
+            template: 'index.html',
             inject: 'body',
             chunks: ['redux']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'async.html',
+            template: 'index.html',
+            inject: 'body',
+            chunks: ['async']
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
