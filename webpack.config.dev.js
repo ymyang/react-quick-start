@@ -31,7 +31,7 @@ module.exports = {
         redux: [
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost',
-            './redux/index.jsx'
+            './redux/index.js'
         ],
         async: [
             'webpack/hot/dev-server',

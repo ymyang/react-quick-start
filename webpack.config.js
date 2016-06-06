@@ -12,7 +12,7 @@ module.exports = {
         timer: './timer/timer.jsx',
         todo: './todo/todo.jsx',
         router: './react-router/router.jsx',
-        redux: './redux/index.jsx',
+        redux: './redux/index.js',
         async: './async-app/index.js'
     },
     output: {
