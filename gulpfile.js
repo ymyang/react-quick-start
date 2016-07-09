@@ -5,7 +5,7 @@
 
 const gulp = require('gulp');
 const webpack = require('webpack');
-const WebpackDevServer = require("webpack-dev-server");
+const WebpackDevServer = require('webpack-dev-server');
 const del = require('del');
 
 gulp.task('clean', (cb) => {
